@@ -1,7 +1,7 @@
 {
-  "name": "Travel-Expenses-Notebook",
+  "name": "travel-expenses",
   "version": "1.0.0",
-  "description": "A simple travel expenses recorder",
+  "description": "Travel expense tracker with a CRUD API and Tailwind frontend",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
