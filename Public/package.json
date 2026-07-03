@@ -1,7 +1,7 @@
 {
-  "name": "node-api-starter",
+  "name": "Travel-Expenses-Notebook",
   "version": "1.0.0",
-  "description": "A simple Node.js API starter for Render deployment",
+  "description": "A simple travel expenses recorder",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
