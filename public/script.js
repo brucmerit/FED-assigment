@@ -6,10 +6,6 @@ const expenseForm = document.getElementById('expenseForm');
 const expenseContainer = document.getElementById('expenseContainer');
 const totalAmount = document.getElementById('totalAmount');
 
-// When the page loads, get all expenses and show them
-window.onload = function () {
-  loadExpenses();
-};
 
 // GET all expenses from the server and display them
 function loadExpenses() {
