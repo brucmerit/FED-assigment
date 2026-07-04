@@ -7,12 +7,12 @@ app.use(express.json()); // parse JSON body
 app.use(express.static(path.join(__dirname, 'public'))); // serve the html/tailwind frontend
 
 let expenses = [
-  { id: 1, title: 'Flight to Tokyo', category: 'Transport', amount: 450.00, date: '2026-06-01' },
-  { id: 2, title: 'Shinjuku Hostel (3 nights)', category: 'Lodging', amount: 180.00, date: '2026-06-02' },
-  { id: 3, title: 'Ramen & street food', category: 'Food', amount: 65.50, date: '2026-06-03' }
+  { id: 1, title: 'Flight to Seoul', category: 'Transport', amount: 450.00, date: '2026-06-01' },
+  { id: 2, title: 'JW Marriott (3 nights)', category: 'Lodging', amount: 600.00, date: '2026-06-02' },
+  { id: 3, title: 'Ramen & Kimchi', category: 'Food', amount: 65.50, date: '2026-06-03' }
 ];
 
-// helper to compute total sum of all expenses
+// getTotal: calculate total sum of all expenses
 function getTotal(list) {
   return list.reduce((sum, e) => sum + Number(e.amount), 0);
 }

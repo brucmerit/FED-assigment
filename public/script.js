@@ -38,6 +38,9 @@ function showExpenses(expenses) {
       <h4 class="font-bold text-lg">${expense.title}</h4>
       <p class="text-gray-500">${expense.category} — ${expense.date}</p>
       <p class="text-blue-600 font-semibold">$${expense.amount}</p>
+      <button onclick="editExpense(${expense.id})" class="bg-gray-200 text-sm py-1 px-3 rounded mt-2">
+        Edit
+      </button>
       <button onclick="deleteExpense(${expense.id})" class="bg-red-100 text-red-700 text-sm py-1 px-3 rounded mt-2">
         Delete
       </button>
@@ -67,6 +70,37 @@ expenseForm.addEventListener('submit', function (event) {
     loadExpenses();      // refresh the list
   });
 });
+
+// EDIT an expense: first GET it by id, then PUT the updated version
+function editExpense(id) {
+  // Step 1: GET the single expense by id
+  fetch(API + '/' + id)
+    .then(response => response.json())
+    .then(expense => {
+      // Step 2: ask the user for new values, showing the old value as default
+      const newTitle = prompt('Title:', expense.title);
+      if (newTitle === null) return; // user clicked Cancel
+
+      const newAmount = prompt('Amount:', expense.amount);
+      if (newAmount === null) return;
+
+      const updatedExpense = {
+        title: newTitle,
+        category: expense.category,
+        amount: newAmount,
+        date: expense.date
+      };
+
+      // Step 3: PUT the updated expense back to the server
+      fetch(API + '/' + id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedExpense)
+      }).then(function () {
+        loadExpenses(); // refresh the list
+      });
+    });
+}
 
 // DELETE an expense by id
 function deleteExpense(id) {
